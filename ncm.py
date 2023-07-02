@@ -41,7 +41,7 @@ if __name__=="__main__":
     for item in dl_queue:
         yt = YouTube(yt_dl_url.format(item[1]))
         try:
-            yt.streams.filter(progressive = True, file_extension = "mp4").first().download(output_path=down_dir, filename="{0}.mp4".format(item[0]))
+            yt.streams.get_highest_resolution().download(output_path=down_dir, filename="{0}.mp4".format(item[0]))
         except:
             print('에러 발생 - {0}'.format(item[1]))
         else:
